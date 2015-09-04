@@ -5,16 +5,6 @@
  */
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
-/**
- * Remove the post info (e.g. Nov. 22 by ADMIN)
- */
-remove_action( 'genesis_entry_header', 'genesis_post_info', 5 );
-
-/**
- * Remove the post meta (e.g. Filed Under: ...)
- */
-remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
 /** Code for custom loop */
 function rbfaq_archive_loop() {
 
@@ -37,7 +27,7 @@ function rbfaq_archive_loop() {
     } // end if
     echo '</div>';
 }
- 
+
 /** Replace the standard loop with our custom loop */
 remove_action( 'genesis_loop', 'genesis_do_loop' );
 add_action( 'genesis_loop', 'rbfaq_archive_loop' );
