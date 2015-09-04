@@ -1,17 +1,7 @@
 <?php
-/**
- * Post Types
- *
- * This file registers any custom post types
- *
- * @package      Core_Functionality
- * @since        1.0.0
- * @author       Jon Schroeder <jon@redblue.us>
- * @license      http://opensource.org/licenses/gpl-2.0.php GNU Public License
- */
 
 /**
- * Create Services post type
+ * Create faqs post type
  * @since 1.0.0
  * @link http://codex.wordpress.org/Function_Reference/register_post_type
  */
