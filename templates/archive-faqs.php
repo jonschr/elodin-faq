@@ -6,16 +6,9 @@
 add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
 
 /**
- * Remove the post info (e.g. Nov. 22 by ADMIN)
+ * FAQ loop.
+ * We're replacing the Genesis loop with our own.
  */
-remove_action( 'genesis_entry_header', 'genesis_post_info', 5 );
-
-/**
- * Remove the post meta (e.g. Filed Under: ...)
- */
-remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
-/** Code for custom loop */
 function rbfaq_archive_loop() {
 
 	echo '<div id="accordion" class="entry-content faqspage">';
