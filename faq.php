@@ -30,8 +30,6 @@ include_once( 'lib/taxonomy.php' );
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
 
-
-
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'rbfaq_add_scripts' );
 function rbfaq_add_scripts() {
@@ -46,23 +44,31 @@ function rbfaq_add_scripts() {
 
 }
 
-//* FAQ Archive template
-function rbfaq_archive_template( $archive_template ) {
-     global $post;
+/**
+ * Set up the archive template
+ * @param  string $archive_template
+ * @return string
+ */
+function rbpfaq_get_archive_template( $archive_template ) {
+    global $post;
 
-     if ( is_post_type_archive ( 'faqs' ) ) {
-          $archive_template = dirname( __FILE__ ) . '/templates/archive-faqs.php';
-     }
-     return $archive_template;
+    if ( is_post_type_archive ( 'faqs' ) ) {
+        $archive_template = dirname( __FILE__ ) . '/templates/archive-faqs.php';
+    }
+    return $archive_template;
 }
-add_filter( 'archive_template', 'rbfaq_archive_template' );
+add_filter( 'archive_template', 'rbpfaq_get_archive_template', 999 ) ;
 
+/**
+ * Set the posts per page to infinite on archives
+ * @param  array $query
+ * @return array
+ */
 function rbfaq_pagesize( $query ) {
     if ( is_admin() || ! $query->is_main_query() )
         return;
 
     if ( is_post_type_archive( 'faqs' ) ) {
-        // Display 50 posts for a custom post type called 'movie'
         $query->set( 'posts_per_page', -1 );
         return;
     }
