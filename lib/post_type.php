@@ -41,7 +41,7 @@ function faq_register_post_type() {
 		'query_var' => true,
 		'rewrite' => true,
 		'capability_type' => 'post',
-		'rewrite' => array( 'slug' => 'faqs' ),
+		'rewrite' => true,
 		'has_archive' => true, 
 		'hierarchical' => false,
 		'menu_position' => null,
