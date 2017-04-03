@@ -1,0 +1,113 @@
+
+/* ==========================================================================
+   Archive styles
+   ========================================================================== */
+
+.tax-faqcat .archive-description {
+	border: none;
+	background-color: transparent;
+	text-align: center;
+	padding: 0px;
+}
+
+.tax-faqcat .archive-description h1.archive-title {
+	font-size: 42px;
+	text-transform: none;
+}
+
+.post-type-archive-faqs {
+	.site-inner {
+		padding-bottom: 80px;
+	}
+}
+
+/* ==========================================================================
+   Styles for Genesis Simple Query Shortcodes
+   ========================================================================== */
+
+.loop-layout-faqs .entry {
+	margin-bottom: 0;
+	padding: 0;
+}
+
+
+/* ==========================================================================
+   FAQ section styles (just the individual faqs being styled here)
+   ========================================================================== */
+
+body .faq-section {
+	margin-bottom: 10px;
+
+	p {
+		margin-bottom: 20px;
+	}
+
+	p.header {
+		background-color: #666;
+		color: white;
+		color: rgba(255,255,255,0.7);
+		padding: 10px 20px;
+		border-radius: 5px;
+		margin-bottom: 0;
+		-webkit-transition: .25s all ease-in-out;
+		-o-transition: .25s all ease-in-out;
+		transition: .25s all ease-in-out;
+		cursor: pointer;
+		font-size: 16px;
+		letter-spacing: 0;
+		text-transform: none;
+		line-height: 1em;
+		margin: 0;
+		padding: 10px;
+		position: relative;
+		line-height: 1em;
+
+		&:hover,
+		&.ui-accordion-header-active {
+			color: white;
+		}
+
+		&.ui-accordion-header-active {
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	div {
+		padding: 20px;
+		margin-bottom: 25px;
+		background-color: #f7f7f7;
+		border: 1px solid #ebebeb;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	p.header i {
+		opacity: 0.5;
+		font-size: 13px;
+		margin-top: 6px;
+		-webkit-transition: .25s all ease-in-out;
+		-o-transition: .25s all ease-in-out;
+		transition: .25s all ease-in-out;
+		transform: rotate(0deg);
+		position: absolute;
+		right: 10px;
+		top: 6px;
+	}
+
+	p.header.ui-accordion-header-active i.fa-chevron-down {
+		transform: rotate(-180deg);
+	}
+
+	p.header:hover i {
+		opacity: 0.7;
+	}
+}

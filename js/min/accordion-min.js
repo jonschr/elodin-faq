@@ -1,0 +1,1 @@
+jQuery(document).ready(function($){$("#accordion").accordion({collapsible:!0,active:!1,header:"div.faq-section > p.header",heightStyle:"content"})});

@@ -34,13 +34,11 @@ include_once( 'lib/admin.php' );
 add_action( 'wp_enqueue_scripts', 'rbfaq_add_scripts' );
 function rbfaq_add_scripts() {
 
-    wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
-
-    wp_enqueue_script( 'jquery-ui-accordion' );
-    wp_enqueue_script( 'custom-accordion', plugins_url('/js/accordion.js', __FILE__), array('jquery') );
-    
+    wp_register_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
     wp_register_style( 'faq-style', plugins_url( '/css/faq-style.css', __FILE__) );
-    wp_enqueue_style( 'faq-style' );
+
+    wp_register_script( 'custom-accordion', plugins_url('/js/accordion.js', __FILE__), array('jquery') );
+    
 
 }
 
@@ -87,3 +85,39 @@ function rbfaq_redirect_faq_single_to_archive()
     exit;
 }
 add_action( 'template_redirect', 'rbfaq_redirect_faq_single_to_archive' );
+
+//* Define what an individual faq entry looks like
+function do_single_faq() {
+
+    echo '<div class="faq-section">';
+        printf( '<p class="header">%s<i class="fa fa-chevron-down"></i></p>', get_the_title() );
+        echo '<div>';
+            edit_post_link( 'Edit this FAQ', '<small>', '</small>', '' );
+            the_content();
+        echo '</div>';
+    echo '</div>';
+}
+
+//* For use with the Genesis Simple Query Shortcodes plugin, attach this
+add_action( 'add_loop_layout_faqs', 'do_single_faq' );
+
+//* Just for the Genesis Simple Query Shotrcodes plugin, we'll need those styles included
+add_action( 'before_loop_layout_faqs', 'do_before_faq' );
+function do_before_faq() {
+
+    //* Scripts to make this work
+    wp_enqueue_script( 'jquery-ui-accordion' );
+    wp_enqueue_script( 'custom-accordion', plugins_url('/js/accordion.js', __FILE__), array('jquery-ui-accordion') );
+
+    //* A few required styles
+    wp_enqueue_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
+    wp_enqueue_style( 'faq-style' );
+
+    echo '<div id="accordion">';
+
+}
+
+add_action( 'after_loop_layout_faqs', 'do_after_faq' );
+function do_after_faq() {
+    echo '</div>'; // #accordion
+}

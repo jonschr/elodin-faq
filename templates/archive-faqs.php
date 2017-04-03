@@ -11,24 +11,17 @@ add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_c
  */
 function rbfaq_archive_loop() {
 
-	echo '<div id="accordion" class="entry-content faqspage">';
+	do_before_faq();
+
     if ( have_posts() ) {
     	while ( have_posts() ) {
     		the_post(); 
-    		?>
-
-    		<div class="faq-section">
-    			<h3><?php the_title(); ?><i class="fa fa-chevron-down"></i></h3>
-    			<div>
-    				<?php edit_post_link( 'Edit this FAQ', '<small>', '</small>', '' ); ?>
-    				<?php the_content(); ?>
-    			</div>
-    		</div>
-    	
-			<?php
+    		
+            do_single_faq();
     	} // end while
     } // end if
-    echo '</div>';
+
+    do_after_faq();
 }
  
 /** Replace the standard loop with our custom loop */
