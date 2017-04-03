@@ -46,19 +46,18 @@ body .faq-section {
 		background-color: #666;
 		color: white;
 		color: rgba(255,255,255,0.7);
-		padding: 10px 20px;
 		border-radius: 5px;
 		margin-bottom: 0;
 		-webkit-transition: .25s all ease-in-out;
 		-o-transition: .25s all ease-in-out;
 		transition: .25s all ease-in-out;
 		cursor: pointer;
-		font-size: 16px;
+		font-size: 18px;
 		letter-spacing: 0;
 		text-transform: none;
 		line-height: 1em;
 		margin: 0;
-		padding: 10px;
+		padding: 10px 15px;
 		position: relative;
 		line-height: 1em;
 
@@ -78,7 +77,7 @@ body .faq-section {
 	}
 
 	div {
-		padding: 20px;
+		padding: 20px 30px;
 		margin-bottom: 25px;
 		background-color: #f7f7f7;
 		border: 1px solid #ebebeb;
