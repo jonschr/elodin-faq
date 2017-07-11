@@ -37,9 +37,6 @@ function rbfaq_add_scripts() {
     wp_register_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
     wp_register_style( 'faq-style', plugins_url( '/css/faq-style.css', __FILE__) );
 
-    wp_register_script( 'custom-accordion', plugins_url('/js/accordion.js', __FILE__), array('jquery') );
-    
-
 }
 
 /**
@@ -105,19 +102,36 @@ add_action( 'add_loop_layout_faqs', 'do_single_faq' );
 add_action( 'before_loop_layout_faqs', 'do_before_faq' );
 function do_before_faq() {
 
+    //* Get a random number to allow for multiples on a page
+    $id = rand ( 1, 10000 );
+
     //* Scripts to make this work
     wp_enqueue_script( 'jquery-ui-accordion' );
-    wp_enqueue_script( 'custom-accordion', plugins_url('/js/accordion.js', __FILE__), array('jquery-ui-accordion') );
+
+    ?>
+    <script>
+    jQuery(document).ready(function($) {
+        $( "#accordion-<?php echo $id; ?>" ).accordion({
+            collapsible: true,
+            active: false,
+            header: 'div.faq-section > p.header',
+            heightStyle: 'content'
+        });
+    });
+    </script>
+
+    <?php
 
     //* A few required styles
     wp_enqueue_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
     wp_enqueue_style( 'faq-style' );
 
-    echo '<div id="accordion">';
+    //* Do a wrapper with a random ID (allows for multiple on a page)
+    printf( '<div id="accordion-%s">', $id );
 
 }
 
 add_action( 'after_loop_layout_faqs', 'do_after_faq' );
 function do_after_faq() {
-    echo '</div>'; // #accordion
+    echo '</div>'; // #accordion-{{THE RANDOM ID}}
 }
