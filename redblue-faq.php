@@ -1,11 +1,12 @@
 <?php
 /*
 	Plugin Name: Red Blue FAQ
-	Plugin URI: http://redblue.us
+	Plugin URI: https://github.com/jonschr/elodin-faq
+    GitHub Plugin URI: https://github.com/jonschr/elodin-faq
 	Description: Just another FAQs plugin
-	Version: 1.1
+	Version: 1.2
     Author: Jon Schroeder
-    Author URI: http://redblue.us
+    Author URI: http://elod.in
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
