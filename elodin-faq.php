@@ -1,10 +1,10 @@
 <?php
 /*
-	Plugin Name: Red Blue FAQ
+	Plugin Name: Elogin FAQ
 	Plugin URI: https://github.com/jonschr/elodin-faq
     GitHub Plugin URI: https://github.com/jonschr/elodin-faq
 	Description: Just another FAQs plugin
-	Version: 1.2
+	Version: 1.2.1
     Author: Jon Schroeder
     Author URI: http://elod.in
 
