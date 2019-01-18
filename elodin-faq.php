@@ -40,6 +40,18 @@ function rbfaq_add_scripts() {
 
     wp_register_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
     wp_register_style( 'faq-style', plugins_url( '/css/faq-style.css', __FILE__) );
+    
+}
+
+/**
+ * Backend styles and scripts
+ */
+add_action( 'enqueue_block_editor_assets', 'rbfaq_enqueue_for_gutenberg' );
+function rbfaq_enqueue_for_gutenberg() {
+
+
+    wp_enqueue_style( 'font-awesome-faq', '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '', '4.2.0' );
+    wp_enqueue_style( 'faq-style', plugins_url( '/css/faq-style.css', __FILE__) );
 
 }
 
@@ -139,3 +151,31 @@ add_action( 'after_loop_layout_faqs', 'do_after_faq' );
 function do_after_faq() {
     echo '</div>'; // #accordion-{{THE RANDOM ID}}
 }
+
+/**
+ * Template Parts with Display Posts Shortcode
+ * @author Bill Erickson
+ * @see https://www.billerickson.net/template-parts-with-display-posts-shortcode
+ *
+ * @param string $output, current output of post
+ * @param array $original_atts, original attributes passed to shortcode
+ * @return string $output
+ */
+function faqs_display_template_part( $output, $original_atts ) {
+    
+    // bail if it's not the 'faqs' layout
+    if ( $original_atts['layout'] != 'faqs' )
+        return $output;
+        
+    ob_start();
+    
+        include( 'partials/dps-faqs.php' );
+        
+        $new_output = ob_get_clean();
+        
+        if( !empty( $new_output ) )
+            $output = $new_output;
+        
+	return $output;
+}
+add_action( 'display_posts_shortcode_output', 'faqs_display_template_part', 10, 2 );
