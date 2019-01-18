@@ -31,6 +31,9 @@ include_once( 'lib/taxonomy.php' );
 //* Customize the admin panel
 include_once( 'lib/admin.php' );
 
+//* Admin Columns Pro settings
+include_once( 'lib/admin_columns.php' );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'rbfaq_add_scripts' );
 function rbfaq_add_scripts() {
