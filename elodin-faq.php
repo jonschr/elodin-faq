@@ -1,6 +1,6 @@
 <?php
 /*
-	Plugin Name: Elogin FAQ
+	Plugin Name: Elodin FAQ
 	Plugin URI: https://github.com/jonschr/elodin-faq
     GitHub Plugin URI: https://github.com/jonschr/elodin-faq
 	Description: Just another FAQs plugin
